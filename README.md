@@ -7,6 +7,35 @@ Private events for iOS. Hosts create an event, share it by link over any side ch
 - **Three ways in** — anyone with the link · request to join (host approves) · only contacts I pick.
 - **Contacts** — find keys on a keyserver by email, fingerprint or key ID, or swap QR codes in person for a verified contact.
 
+## Design
+
+### Onboarding → hosting an event
+
+<table>
+  <tr>
+    <td align="center" width="33%"><img src="docs/screens/01-passkey.png" width="240" alt="Passkey sign-in"><br><sub><b>1 · Passkey sign-in</b></sub></td>
+    <td align="center" width="33%"><img src="docs/screens/02-pgp-key.png" width="240" alt="PGP key setup"><br><sub><b>2 · PGP key setup</b><br>generate or import</sub></td>
+    <td align="center" width="33%"><img src="docs/screens/03-events.png" width="240" alt="Events home"><br><sub><b>3 · Events</b><br>hosting & invited</sub></td>
+  </tr>
+  <tr>
+    <td align="center"><img src="docs/screens/04-create-event.png" width="240" alt="Create event"><br><sub><b>4 · Create event</b><br>encrypted on device</sub></td>
+    <td align="center"><img src="docs/screens/05-share.png" width="240" alt="Share and audience"><br><sub><b>5 · Who can join?</b><br>link · request · contacts</sub></td>
+    <td align="center"><img src="docs/screens/06-guest-view.png" width="240" alt="Guest view"><br><sub><b>6 · Guest view</b><br>opened from a link</sub></td>
+  </tr>
+</table>
+
+### Contacts
+
+<table>
+  <tr>
+    <td align="center" width="33%"><img src="docs/screens/07-contacts.png" width="240" alt="Contacts"><br><sub><b>7 · Contacts</b><br>verified vs keyserver</sub></td>
+    <td align="center" width="33%"><img src="docs/screens/08-add-contact.png" width="240" alt="Add contact from keyserver"><br><sub><b>8 · Keyserver lookup</b><br>email, fingerprint or key ID</sub></td>
+    <td align="center" width="33%"><img src="docs/screens/09-qr-exchange.png" width="240" alt="QR key exchange"><br><sub><b>9 · QR exchange</b><br>verified in person</sub></td>
+  </tr>
+</table>
+
+<sub>Design mocks — sample names and events are illustrative. The SwiftUI app follows these screens using native controls.</sub>
+
 ## Getting started
 
 ```sh
