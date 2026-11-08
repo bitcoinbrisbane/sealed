@@ -1,0 +1,29 @@
+name: SealedCore tests
+
+on:
+  push:
+    paths: ["Packages/SealedCore/**", ".github/workflows/core-tests.yml"]
+  pull_request:
+    paths: ["Packages/SealedCore/**"]
+
+jobs:
+  linux:
+    runs-on: ubuntu-latest
+    container: swift:5.10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test
+        working-directory: Packages/SealedCore
+        run: swift test
+
+  ios-build:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Generate project
+        run: brew install xcodegen && xcodegen
+      - name: Build app (simulator, unsigned)
+        run: |
+          xcodebuild -project Sealed.xcodeproj -scheme Sealed \
+            -destination 'generic/platform=iOS Simulator' \
+            CODE_SIGNING_ALLOWED=NO build

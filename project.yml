@@ -1,0 +1,58 @@
+# Generate the Xcode project with:  brew install xcodegen && xcodegen
+name: Sealed
+options:
+  bundleIdPrefix: app.sealed
+  deploymentTarget:
+    iOS: "17.0"
+  createIntermediateGroups: true
+
+packages:
+  SealedCore:
+    path: Packages/SealedCore
+
+settings:
+  base:
+    SWIFT_VERSION: "5.0"
+    # Set your team ID here (or in Xcode) so passkeys and associated domains can be signed.
+    DEVELOPMENT_TEAM: ""
+
+targets:
+  Sealed:
+    type: application
+    platform: iOS
+    sources:
+      - path: Sealed
+    dependencies:
+      - package: SealedCore
+    entitlements:
+      path: Sealed/Sealed.entitlements
+      properties:
+        com.apple.developer.associated-domains:
+          - webcredentials:sealed.app
+          - applinks:sealed.app
+    info:
+      path: Sealed/Info.plist
+      properties:
+        CFBundleDisplayName: Sealed
+        UILaunchScreen: {}
+        UISupportedInterfaceOrientations: [UIInterfaceOrientationPortrait]
+        NSCameraUsageDescription: Scan a contact's QR code to exchange PGP keys in person.
+        NSFaceIDUsageDescription: Unlock your PGP key.
+        CFBundleURLTypes:
+          - CFBundleURLName: app.sealed.links
+            CFBundleURLSchemes: [sealed]
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: app.sealed.ios
+        TARGETED_DEVICE_FAMILY: "1"
+        GENERATE_INFOPLIST_FILE: NO
+
+schemes:
+  Sealed:
+    build:
+      targets:
+        Sealed: all
+    run:
+      config: Debug
+    test:
+      config: Debug

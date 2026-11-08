@@ -1,0 +1,15 @@
+{
+  "webcredentials": {
+    "apps": ["TEAMID.app.sealed.ios"]
+  },
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["TEAMID.app.sealed.ios"],
+        "components": [
+          { "/": "/e/*", "comment": "Event links. The #key fragment is never sent to the server." }
+        ]
+      }
+    ]
+  }
+}
